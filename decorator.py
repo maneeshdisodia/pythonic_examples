@@ -1,18 +1,36 @@
-def new_decorator(func):
+# decorater
 
-    def wrap_func():
-        print("CODE HERE BEFORE EXECUTING FUNC")
-        print(locals())
+def ingredients(func):
+    def wrapper():
+        print("##totato##")
         func()
-        print("FUNC() HAS BEEN CALLED")
+        print("##totato##")
+        # print("</''''''''\>")
 
-    return wrap_func
-
-
-def func_needs_decorator():
-    print('THIS FUNCTION NEED OF A DCORATOR')
+    return wrapper
 
 
-func_needs_decorator = new_decorator(func_needs_decorator)
+def bread(func):
+    def wrapper():
+        print("</''''''''\>")
+        func()
+        print("<\......../>")
 
-func_needs_decorator()
+    return wrapper
+
+
+# def sandwich(food='--ham--'):
+#     print(food)
+#
+#
+# sandwich()
+# sandwich = bread(ingredients(sandwich))
+# sandwich()
+
+
+@bread
+@ingredients
+def sandwich(food='--ham--'):
+    print(food)
+
+sandwich()
