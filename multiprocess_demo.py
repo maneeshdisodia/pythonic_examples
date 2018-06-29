@@ -16,9 +16,8 @@ def process_cursor(skip_n, limit_n,l):
     print('Starting process', skip_n // limit_n, '...')
     client = MongoClient(uri)
     db = client.cs_ml
-    max = db.ml_prod_socialprofiles.find({}).skip(skip_n).limit(limit_n)
-    #max = db.ml_prod_socialprofiles.find({}).skip(5781408)
-    # print(len(list(max)))
+    max = db.coll.find({}).skip(skip_n).limit(limit_n)
+
     max_list = list(max)
     status = process_data(max_list,l)
     print('job done for partitions', skip_n // limit_n, status)
